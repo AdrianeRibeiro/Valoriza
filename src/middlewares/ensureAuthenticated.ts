@@ -16,12 +16,10 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
 
   try {
     const { sub } = verify(token, "6425ddbf9cd648e1e4d33c4340d3373d") as IPayLoad
-    return next()
     
     request.user_id = sub
-  }catch(err) {
+    return next()
+  } catch(err) {
     response.status(401).end()
-  }
-  
-  return next()
+  } 
 }

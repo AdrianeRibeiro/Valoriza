@@ -26,7 +26,8 @@ class AuthenticateUserService {
       throw new Error("Email/Password incorrect")
     }
 
-    const token = sign({email: user.email}, 
+    const token = sign(
+      {email: user.email}, 
       "6425ddbf9cd648e1e4d33c4340d3373d", {
       subject: user.id,
       expiresIn: "1d"
